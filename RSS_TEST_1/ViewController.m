@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "NSParser.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *name = [defaults objectForKey:@"favorites"];
+    NSLog(@"viewDidLoad %@",name);
+    
+}
+-(void)viewWillAppear:(BOOL)animated {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *name = [defaults objectForKey:@"favorites"];
+    NSLog(@"viewWillAppear %@",name);
+
 }
 
 - (void)didReceiveMemoryWarning {

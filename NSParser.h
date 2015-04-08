@@ -10,6 +10,12 @@
 
 @interface NSParser : NSObject <NSXMLParserDelegate>
 
-@property (strong, nonatomic) NSMutableData
+@property (strong, nonatomic) NSMutableData *data;
+
++(instancetype)sharedInstance;
+
+-(void)go;
+-(NSDictionary*)extractNewsFromSources:(NSDictionary*)sources;
+
 
 @end

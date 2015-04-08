@@ -15,6 +15,9 @@
 		7836CAF91AD2BE4700FE0DA4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7836CAF71AD2BE4700FE0DA4 /* LaunchScreen.xib */; };
 		7836CB051AD2BE4700FE0DA4 /* RSS_TEST_1Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7836CB041AD2BE4700FE0DA4 /* RSS_TEST_1Tests.m */; };
 		7836CB101AD2CA1200FE0DA4 /* NSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7836CB0F1AD2CA1200FE0DA4 /* NSParser.m */; };
+		787431B11AD55BB700E841F7 /* categories.plist in Resources */ = {isa = PBXBuildFile; fileRef = 787431B01AD55BB700E841F7 /* categories.plist */; };
+		78886F851AD2D6D300D67284 /* NSNews.m in Sources */ = {isa = PBXBuildFile; fileRef = 78886F841AD2D6D300D67284 /* NSNews.m */; };
+		78D281051AD33C040001F089 /* NSPreferencesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D281041AD33C040001F089 /* NSPreferencesTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +46,11 @@
 		7836CB041AD2BE4700FE0DA4 /* RSS_TEST_1Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSS_TEST_1Tests.m; sourceTree = "<group>"; };
 		7836CB0E1AD2CA1200FE0DA4 /* NSParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSParser.h; path = ../NSParser.h; sourceTree = "<group>"; };
 		7836CB0F1AD2CA1200FE0DA4 /* NSParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSParser.m; path = ../NSParser.m; sourceTree = "<group>"; };
+		787431B01AD55BB700E841F7 /* categories.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = categories.plist; sourceTree = "<group>"; };
+		78886F831AD2D6D300D67284 /* NSNews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSNews.h; path = ../NSNews.h; sourceTree = "<group>"; };
+		78886F841AD2D6D300D67284 /* NSNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSNews.m; path = ../NSNews.m; sourceTree = "<group>"; };
+		78D281031AD33C040001F089 /* NSPreferencesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSPreferencesTableViewController.h; path = ../NSPreferencesTableViewController.h; sourceTree = "<group>"; };
+		78D281041AD33C040001F089 /* NSPreferencesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSPreferencesTableViewController.m; path = ../NSPreferencesTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +99,11 @@
 				7836CAF21AD2BE4700FE0DA4 /* Main.storyboard */,
 				7836CB0E1AD2CA1200FE0DA4 /* NSParser.h */,
 				7836CB0F1AD2CA1200FE0DA4 /* NSParser.m */,
+				78886F831AD2D6D300D67284 /* NSNews.h */,
+				78886F841AD2D6D300D67284 /* NSNews.m */,
+				78D281031AD33C040001F089 /* NSPreferencesTableViewController.h */,
+				78D281041AD33C040001F089 /* NSPreferencesTableViewController.m */,
+				787431B01AD55BB700E841F7 /* categories.plist */,
 				7836CAF51AD2BE4700FE0DA4 /* Images.xcassets */,
 				7836CAF71AD2BE4700FE0DA4 /* LaunchScreen.xib */,
 				7836CAE81AD2BE4700FE0DA4 /* Supporting Files */,
@@ -204,6 +217,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				787431B11AD55BB700E841F7 /* categories.plist in Resources */,
 				7836CAF41AD2BE4700FE0DA4 /* Main.storyboard in Resources */,
 				7836CAF91AD2BE4700FE0DA4 /* LaunchScreen.xib in Resources */,
 				7836CAF61AD2BE4700FE0DA4 /* Images.xcassets in Resources */,
@@ -224,6 +238,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78886F851AD2D6D300D67284 /* NSNews.m in Sources */,
+				78D281051AD33C040001F089 /* NSPreferencesTableViewController.m in Sources */,
 				7836CAF11AD2BE4700FE0DA4 /* ViewController.m in Sources */,
 				7836CAEE1AD2BE4700FE0DA4 /* AppDelegate.m in Sources */,
 				7836CAEB1AD2BE4700FE0DA4 /* main.m in Sources */,
@@ -420,6 +436,7 @@
 				7836CB0A1AD2BE4700FE0DA4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7836CB0B1AD2BE4700FE0DA4 /* Build configuration list for PBXNativeTarget "RSS_TEST_1Tests" */ = {
 			isa = XCConfigurationList;
@@ -428,6 +445,7 @@
 				7836CB0D1AD2BE4700FE0DA4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
