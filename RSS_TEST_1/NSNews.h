@@ -10,7 +10,7 @@
 
 @interface NSNews : NSObject
 @property (strong, nonatomic) NSString *title;
-@property (strong, nonatomic) NSString *link;
+@property (strong, nonatomic) NSURL *link;
 @property (strong, nonatomic) NSURL *imageUrl;
 
 -(id)initWithServerResponse:(NSDictionary*)responseObject;

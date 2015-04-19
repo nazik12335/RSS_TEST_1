@@ -74,7 +74,7 @@
     NSLog(@"go");
     feeds = [[NSMutableArray alloc] init];
     self.dict = category;
-    self.category = [self.dict objectForKey:@"Technology"];
+    self.category = [self.dict objectForKey:@"Sport"];
   //  NSArray *arr = [self.category allValues];
  
     

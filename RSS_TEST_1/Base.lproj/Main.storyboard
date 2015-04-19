@@ -90,6 +90,9 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UBQ-Vw-BIg" id="XC2-5Q-aXo">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="9LH-6K-1hg" kind="show" identifier="showDetail" id="tdX-Vj-wa1"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -107,6 +110,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KkY-qp-J5I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2806" y="1113"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="Dlq-a4-Yvl">
+            <objects>
+                <viewController id="9LH-6K-1hg" customClass="NSDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ft1-wh-Xql"/>
+                        <viewControllerLayoutGuide type="bottom" id="IWh-aL-ai5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eMa-Ne-8dl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cr1-sS-PHs">
+                                <rect key="frame" x="242" y="512" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oga-KT-fYh">
+                                <rect key="frame" x="16" y="261" width="568" height="128"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBA-lq-mUJ">
+                                <rect key="frame" x="16" y="101" width="568" height="133"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="gtitle" destination="aBA-lq-mUJ" id="Ye2-KD-LyS"/>
+                        <outlet property="imageView" destination="Oga-KT-fYh" id="SDh-T0-xUf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q4v-9Z-HUA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3480" y="1118"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Bnq-a4-gFI">

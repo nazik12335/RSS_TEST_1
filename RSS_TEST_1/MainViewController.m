@@ -12,7 +12,7 @@
 #import "NSNews.h"
 #import "NSDetailViewController.h"
 #import "NSNewsCell.h"
-#import <QuartzCore/QuartzCore.h>
+#import "UIImageView+AFNetworking.h"
 
 @interface MainViewController ()
 @property (strong, nonatomic) NSDictionary *favoritesToShow;
@@ -27,6 +27,8 @@
 @end
 
 @implementation MainViewController
+
+#pragma mark = Load View
 
 - (void)viewDidLoad
 {
@@ -99,6 +101,8 @@
     self.favoritesToShow = [defaults objectForKey:@"favorites"];
 }
 
+#pragma mark - API
+
 -(void)getRssFeedFromServer {
     
     if (self.refreshControl) {
@@ -149,6 +153,9 @@
                                                       [self.refreshControl endRefreshing];
                                                   }];
 }
+
+#pragma mark - UITableViewDataSource
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     
@@ -177,39 +184,73 @@
     }
     
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 81.f;
+
+}
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+
     
     // AFTER
     NSNewsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NSNewsCell"];
     if (!cell) {
         cell = [[NSNewsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"NSNewsCell"];
     }
+
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     
+    NSNews *news = [self.newsArray objectAtIndex:indexPath.row];
+    NSLog(@"image url = %@, title = %@",news.imageUrl,news.title);
     
-        NSNews *news = [self.newsArray objectAtIndex:indexPath.row];
-        
+    cell.titleLabel.text = news.title;
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:news.imageUrl];
+    
+    __weak NSNewsCell *weakCell = cell;
+    
+    cell.imageView.image = nil;
+    
+    [cell.imageView setImageWithURLRequest:request
+                          placeholderImage:nil
+                                   success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                       weakCell.thumbnailView.image = image;
+                                       weakCell.thumbnailView.layer.cornerRadius = weakCell.thumbnailView.frame.size.height /2;
+                                       weakCell.thumbnailView.layer.masksToBounds = YES;
+                                       weakCell.thumbnailView.layer.borderWidth = 0;
+                                       [weakCell layoutSubviews];
+                                   } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+                                       
+                                   }];
+    
+   /*
         cell.titleLabel.text = news.title;
     //cell.thumbnailView.layer.borderWidth = 3.0f;
     //cell.thumbnailView.layer.borderColor = [UIColor whiteColor].CGColor;
-    cell.imageView.image = nil;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         NSData *imageData = [NSData dataWithContentsOfURL:news.imageUrl];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-        
-            cell.thumbnailView.image = [UIImage imageWithData:imageData];
+        if (imageData) {
+            UIImage *image = [UIImage imageWithData:imageData];
+            if (image) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    NSNewsCell *updateCell = (id)[tableView cellForRowAtIndexPath:indexPath];
+                    if (updateCell) {
+                        cell.thumbnailView.image = image;
+                        cell.thumbnailView.layer.cornerRadius = cell.thumbnailView.frame.size.height /2;
+                        cell.thumbnailView.layer.masksToBounds = YES;
+                        cell.thumbnailView.layer.borderWidth = 0;
+                    }
+                });
 
-            cell.thumbnailView.layer.cornerRadius = cell.thumbnailView.frame.size.height /2;
-            cell.thumbnailView.layer.masksToBounds = YES;
-            cell.thumbnailView.layer.borderWidth = 0;
-        });
+            }
+        }
         
     });
     
-
+*/
     
     return cell;
 }
@@ -220,8 +261,9 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         if ([self.newsArray count] > 1) {
             NSNews *news2 = [self.newsArray objectAtIndex:indexPath.row];
-            [[segue destinationViewController] setUrl:news2.link];
-
+            [[segue destinationViewController] setDetailTitle:news2.title];
+            [[segue destinationViewController] setDetailImageUrl:news2.imageUrl];
+            [[segue destinationViewController] setDetaiLink:news2.link];
         }
         
         

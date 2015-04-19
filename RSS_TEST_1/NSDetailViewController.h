@@ -10,6 +10,8 @@
 
 @interface NSDetailViewController : UIViewController
 
-@property (copy, nonatomic) NSString *url;
-@property (strong, nonatomic) IBOutlet UIWebView *webView;
+@property (strong, nonatomic) NSString *detailTitle;
+@property (strong, nonatomic) NSURL *detaiLink;
+@property (strong, nonatomic) NSURL *detailImageUrl;
+
 @end

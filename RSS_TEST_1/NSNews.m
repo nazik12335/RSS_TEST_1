@@ -15,12 +15,20 @@
     if (self) {
         
         self.title = [responseObject objectForKey:@"title"];
-        self.link = [responseObject objectForKey:@"link"];
         
+        NSString *linkString = [responseObject objectForKey:@"link"];
+        
+        if (linkString) {
+            self.link = [NSURL URLWithString:linkString];
+
+        }
+       
         NSString *urlString = [responseObject objectForKey:@"imageUrl"];
         
         if (urlString) {
             self.imageUrl = [NSURL URLWithString:urlString];
+        }else {
+            self.imageUrl = nil;
         }
         
         
