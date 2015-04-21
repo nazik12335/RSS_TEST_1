@@ -68,13 +68,14 @@
 }*/
 
 -(void)getNewsWithCategory:(NSDictionary*)category
+                       key:(NSString*)keyCategory
                  onSuccess:(void(^)(NSArray *news)) success
                            onFailure:(void(^)(NSError *error, NSInteger statusCode)) failure
 {
     NSLog(@"go");
     feeds = [[NSMutableArray alloc] init];
     self.dict = category;
-    self.category = [self.dict objectForKey:@"Sport"];
+    self.category = [self.dict objectForKey:keyCategory];
   //  NSArray *arr = [self.category allValues];
  
     
@@ -175,11 +176,20 @@
 
     if ([elementName isEqualToString:@"item"]) {
         
-        [item setObject:title forKey:@"title"];
-        [item setObject:link forKey:@"link"];
+        if (title) {
+            [item setObject:title forKey:@"title"];
+
+        }
+        if (link) {
+            [item setObject:link forKey:@"link"];
+
+        }
         NSString *imgUrl = [self findFirstImgUrlInString:imageUrl];
         if (imgUrl) {
             [item setObject:imgUrl forKey:@"imageUrl"];
+        }else {
+           // NSLog(@"NO IMAGE");
+            
         }
         
         [feeds addObject:[item copy]];
@@ -193,4 +203,5 @@
 
  
 }
+
 @end

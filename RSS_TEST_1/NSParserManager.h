@@ -11,6 +11,7 @@
 @interface NSParserManager : NSObject
 +(instancetype)sharedInstance;
 -(void)getNewsWithCategory:(NSDictionary*)category
+                       key:(NSString*)keyCategory
                  onSuccess:(void(^)(NSArray *news)) success
                  onFailure:(void(^)(NSError *error, NSInteger statusCode)) failure;
 @end

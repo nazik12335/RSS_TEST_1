@@ -12,9 +12,11 @@
 #import "NSNews.h"
 #import "NSDetailViewController.h"
 #import "NSNewsCell.h"
+#import "NSPreferencesTableViewController.h"
 #import "UIImageView+AFNetworking.h"
 
 @interface MainViewController ()
+
 @property (strong, nonatomic) NSDictionary *favoritesToShow;
 @property (strong, nonatomic) NSMutableArray *newsArray;
 
@@ -40,7 +42,7 @@
     self.categoriesToShow = [NSMutableDictionary dictionary];
     self.keysArray = [NSArray array];
     self.valuesArray = [NSArray array];
-    
+    self.keyCat = @"Politics";
     
     SWRevealViewController *revealViewController = self.revealViewController;
     if (revealViewController) {
@@ -85,6 +87,7 @@
     
 
     [defaults setObject:self.favorites forKey:@"favorites"];
+    [defaults setObject:self.keysArray forKey:@"keysArray"];
     [defaults setObject:self.nonFavorites forKey:@"non-favorites"];
     [defaults synchronize];
 
@@ -119,6 +122,7 @@
     }
     
        [[NSParserManager sharedInstance]getNewsWithCategory:self.favoritesToShow
+                                                        key:self.keyCat
                                                   onSuccess:^(NSArray *news) {
                                                       NSLog(@"Success");
 
@@ -201,27 +205,30 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     
     NSNews *news = [self.newsArray objectAtIndex:indexPath.row];
-    NSLog(@"image url = %@, title = %@",news.imageUrl,news.title);
     
     cell.titleLabel.text = news.title;
-    
+    cell.thumbnailView.layer.cornerRadius = cell.thumbnailView.frame.size.height /2;
+    cell.thumbnailView.layer.masksToBounds = YES;
+    cell.thumbnailView.layer.borderWidth = 0;
     NSURLRequest *request = [NSURLRequest requestWithURL:news.imageUrl];
-    
     __weak NSNewsCell *weakCell = cell;
     
-    cell.imageView.image = nil;
-    
-    [cell.imageView setImageWithURLRequest:request
-                          placeholderImage:nil
-                                   success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-                                       weakCell.thumbnailView.image = image;
-                                       weakCell.thumbnailView.layer.cornerRadius = weakCell.thumbnailView.frame.size.height /2;
-                                       weakCell.thumbnailView.layer.masksToBounds = YES;
-                                       weakCell.thumbnailView.layer.borderWidth = 0;
-                                       [weakCell layoutSubviews];
-                                   } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-                                       
-                                   }];
+    cell.thumbnailView.image = nil;
+    if (news.imageUrl) {
+        [cell.imageView setImageWithURLRequest:request
+                              placeholderImage:nil
+                                       success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                           weakCell.thumbnailView.image = image;
+                                          
+                                           [weakCell layoutSubviews];
+                                       } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+                                           
+                                       }];
+
+    }else {
+        cell.thumbnailView.image = [UIImage imageNamed:@"placeholder.png"];
+
+    }
     
    /*
         cell.titleLabel.text = news.title;

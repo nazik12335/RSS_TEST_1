@@ -13,7 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *gtitle;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-
+@property (weak, nonatomic) IBOutlet UIButton *showMoreButton;
 
 @end
 
@@ -23,7 +23,7 @@
 
     [super viewDidLoad];
     
-    
+    self.showMoreButton.titleLabel.adjustsFontSizeToFitWidth = YES;
    
 
     //NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
@@ -31,28 +31,31 @@
     //Load the request in the UIWebView.
     //[self.webView loadRequest:requestObj];
 }
--(void)viewDidAppear:(BOOL)animated {
-
-    [super viewDidAppear:animated];
-     self.gtitle.text = [NSString stringWithFormat:@"%@",self.detailTitle];
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSData *imageData = [NSData dataWithContentsOfURL:self.detailImageUrl];
-        if (imageData) {
-            UIImage *image = [UIImage imageWithData:imageData];
-            if (image) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    UIColor *bg = [UIColor colorWithPatternImage:image];
-                    
-                    self.view.backgroundColor = bg;
-                    
-                    //self.imageView.image = image;
-                });
+    self.gtitle.text = [NSString stringWithFormat:@"%@",self.detailTitle];
+    
+    if (self.detailImageUrl) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            NSData *imageData = [NSData dataWithContentsOfURL:self.detailImageUrl];
+            if (imageData) {
+                UIImage *image = [UIImage imageWithData:imageData];
+                if (image) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        self.imageView.image = image;
+                    });
+                }
             }
-        }
-        
-    });
-    
+            
+        });
 
+    }else {
+        self.imageView.image = [UIImage imageNamed:@"placeholder.png"];
+    }
+    
+    
 }
+
 @end

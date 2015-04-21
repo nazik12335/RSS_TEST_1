@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface MainViewController : UITableViewController
+
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
+@property (strong, nonatomic) NSString *keyCat;
 
 @end

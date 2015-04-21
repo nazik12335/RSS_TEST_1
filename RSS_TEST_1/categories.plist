@@ -6,19 +6,11 @@
 	<dict>
 		<key>Culture</key>
 		<dict>
-			<key>zaxid.net</key>
-			<string>http://zaxid.net/rss/6.xml</string>
 			<key>ua.korrespondent.net</key>
 			<string>http://k.img.com.ua/rss/ua/culture.xml</string>
-			<key>farty.ua</key>
-			<string>http://fakty.ua/rss_feed/culture</string>
 		</dict>
 		<key>Sport</key>
 		<dict>
-			<key>zaxid.net</key>
-			<string>http://zaxid.net/rss/7.xml</string>
-			<key>fakty.ua</key>
-			<string>http://fakty.ua/rss_feed/sport</string>
 			<key>ua.korrespondent.net</key>
 			<string>http://k.img.com.ua/rss/ua/sport.xml</string>
 		</dict>
@@ -26,15 +18,11 @@
 		<dict>
 			<key>ua.korrespondent.net</key>
 			<string>http://k.img.com.ua/rss/ua/politics.xml</string>
-			<key>fakty.ua</key>
-			<string>http://fakty.ua/rss_feed/politics</string>
 		</dict>
 		<key>Health</key>
 		<dict>
 			<key>ua.korrespondent.net</key>
 			<string>http://k.img.com.ua/rss/ua/health.xml</string>
-			<key>fakty.ua</key>
-			<string>http://fakty.ua/rss_feed/health</string>
 		</dict>
 		<key>Art</key>
 		<dict>
@@ -45,17 +33,11 @@
 		<dict>
 			<key>ua.korrespondent.net</key>
 			<string>http://k.img.com.ua/rss/ua/technews.xml</string>
-			<key>fakty.ua</key>
-			<string>http://fakty.ua/rss_feed/science</string>
 		</dict>
 		<key>World</key>
 		<dict>
-			<key>zaxid.net</key>
-			<string>http://zaxid.net/rss/8.xml</string>
 			<key>ua.korrespondent.net</key>
 			<string>http://k.img.com.ua/rss/ua/world.xml</string>
-			<key>fakty.ua</key>
-			<string>http://fakty.ua/rss_feed/world</string>
 		</dict>
 	</dict>
 </dict>
